@@ -16,15 +16,15 @@ Resources:
          ToPort: 8080
          CidrIp: 0.0.0.0/0
       
- # MyEC2Instance:
-   # Type: AWS::EC2::Instance
-   # Properties: 
-   #   ImageId: ami-01a00762f46d584a1
-   #   InstanceType: c7i-flex.large
-   #   KeyName: Linux-mumbai
-   #   SecurityGroupIds: 
-   #     - !Ref MySecurityGroup1
-   #   Tags:
-   #     - Key: Name
-   #       Value: Ubuntu-Server-2 
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: ami-01a00762f46d584a1
+      InstanceType: c7i-flex.large
+      KeyName: Linux-mumbai
+      SecurityGroupIds: 
+        - !Ref MySecurityGroup1
+      Tags:
+        - Key: Name
+          Value: Ubuntu-Server-2 
     
