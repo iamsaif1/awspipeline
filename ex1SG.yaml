@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Simple EC2 Instance with Security Group'
+
+Resources:
+ SaifSG:
+  Type: AWS::EC2::SecurityGroup
+  Properties:
+   GroupName: SaifSG
+   GroupDescription: Security Group with RDP,HTTP,SSH Ports
+   SecurityGroupIngress:
+    - IpProtocol: tcp
+      FromPort: 22
+      ToPort: 22
+      CidrIp: 0.0.0.0/0
+    
+    - IpProtocol: tcp
+      FromPort: 3389
+      ToPort: 3389
+      CidrIp: 0.0.0.0/0
+      
+    - IpProtocol: tcp
+      FromPort: 8080
+      ToPort: 8080
+      CidrIp: 0.0.0.0/0
+  
+   Tags:
+    - Key: Name
+      Value: SaifSG
+ 
+ #SaifCFInstance:
+  #Type: AWS::EC2::Instance
+  #Properties:
+   #InstanceType: t3.micro
+   #ImageId: ami-074ed8814cda18d42
+   #SecurityGroupIds:
+    #- !Ref SaifSG
+   #KeyName: Linux-mumbai
+   #Tags:
+    #- Key: Name
+      #Value: SaifCFServer
