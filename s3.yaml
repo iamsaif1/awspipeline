@@ -5,6 +5,6 @@ Resources:
   CFS3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: cf-saif-220826-bucket
+      BucketName: QA-Test-cf-saif-220826-bucket
       VersioningConfiguration:
         Status: Enabled
