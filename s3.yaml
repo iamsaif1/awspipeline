@@ -1,0 +1,10 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Template to create an Amazon S3 bucket.
+
+Resources: 
+  CFS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: cf-saif-220826-bucket
+      VersioningConfiguration:
+        Status: Enabled
