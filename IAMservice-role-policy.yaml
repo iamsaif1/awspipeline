@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'CloudFormation template to create an EC2 service role with an inline custom policy and an instance profile.'
+
+Resources:
+  # 1. Create the IAM Role for EC2
+  MyEC2Role:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      RoleName: 'IAMCustomServiceRole'
+      Description: 'IAM role for EC2 instances with custom inline permissions'
+      # The Trust Policy allows EC2 instances to assume this role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Principal:
+              Service:
+                - 'ec2.amazonaws.com'
+            Action:
+              - 'sts:AssumeRole'
+      
+      # The Inline Policy embedded directly within the role
+      Policies:
+        - PolicyName: 'EC2InlineCustomPolicy'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: 'Allow'
+                Action:
+                  - 's3:GetObject'
+                  - 's3:ListBucket'
+                  - 's3:PutObject'
+                  - 's3:ListBucket'
+                  - 's3:ListAllMyBuckets'
+                Resource: 
+                  - '*'
+
+  # 2. Create the Instance Profile that EC2 passes to the instance
+  MyEC2InstanceProfile:
+    Type: 'AWS::IAM::InstanceProfile'
+    Properties:
+      InstanceProfileName: 'EC2CustomInstanceProfile'
+      Path: '/'
+      Roles:
+        - Ref: 'MyEC2Role'
+

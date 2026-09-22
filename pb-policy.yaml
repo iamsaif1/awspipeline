@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'CloudFormation template to create a customer managed IAM policy.'
+
+Resources:
+  PermissionBoundaryManagedPolicy:
+    Type: 'AWS::IAM::ManagedPolicy'
+    Properties:
+      ManagedPolicyName: 'Permission-Boundary-Policy'
+      Description: 'Allows read-only access to a specific S3 bucket'
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Action:
+              - 's3:GetObject'
+              - 's3:ListBucket'
+              - 's3:ListAllMyBuckets'
+              - 's3:PutObject'
+            Resource:
+              - '*'
+
+Outputs:
+  PolicyArn:
+    Description: 'The Amazon Resource Name (ARN) of the created managed policy'
+    Value: !Ref PermissionBoundaryManagedPolicy
