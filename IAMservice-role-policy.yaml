@@ -21,7 +21,7 @@ Resources:
       
       # The Inline Policy embedded directly within the role
       Policies:
-        - PolicyName: 'EC2InlineCustomPolicy'
+        - PolicyName: 'EC2-S3-Policy'
           PolicyDocument:
             Version: '2012-10-17'
             Statement:
