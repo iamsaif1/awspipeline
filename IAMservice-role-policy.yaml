@@ -32,7 +32,7 @@ Resources:
                   - 's3:PutObject'
                   - 's3:ListBucket'
                   - 's3:ListAllMyBuckets'
-                  - 's3:DeleteBucket'
+                  - 's3:DeleteObject'
                   - 'ec2:Describe*'
                 Resource: 
                   - '*'
